@@ -34,3 +34,23 @@ window.addEventListener('load', function () {
     document.body.classList.add('loaded');
   }, 200);
 });
+
+//=======================================================================
+// AUDIO
+
+const SOUND_BUTTON = document.querySelector('.sound-btn');
+console.log(SOUND_BUTTON);
+const AUDIO = document.querySelector('.audio');
+
+SOUND_BUTTON.addEventListener('click', function () {
+  this.classList.toggle('paused');
+  AUDIO.paused ? AUDIO.play() : AUDIO.pause();
+});
+
+window.addEventListener('focus', function () {
+  SOUND_BUTTON.classList.contains('paused') ? AUDIO.pause() : AUDIO.play();
+});
+
+window.addEventListener('blur', function () {
+  AUDIO.pause();
+});

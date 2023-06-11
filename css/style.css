@@ -250,3 +250,14 @@ video.media-frame {
   width: calc((1vw + 1vh) * 36);
   height: calc((1vw + 1vh) * 26);
 }
+
+.sound-btn {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  width: 24px;
+  -webkit-transition: 0.25s ease;
+  -o-transition: 0.25s ease;
+  transition: 0.25s ease;
+  cursor: pointer;
+}

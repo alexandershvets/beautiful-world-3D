@@ -245,3 +245,12 @@ video {
     height: calc($index * $sideSmall);
   }
 }
+
+.sound-btn {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  width: 24px;
+  transition: 0.25s ease;
+  cursor: pointer;
+}
