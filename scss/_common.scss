@@ -1,1 +1,32 @@
 // Заголовки, общие БЄМ блоки и проче...
+h1,
+h2,
+h3,
+h4 {
+  font-family: raleway-3d, sans-serif;
+  font-weight: 100;
+  text-transform: uppercase;
+  width: min-content;
+  line-height: 1;
+}
+
+.loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: calc($index * 0.8);
+  transition: opacity 0.3s easу 0s;
+  opacity: 1;
+  .loaded & {
+    opacity: 0;
+  }
+}
+
+// Скрыть Scrollbar
+body {
+  scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}

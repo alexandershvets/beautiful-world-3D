@@ -16,9 +16,11 @@
 
 // ПЕРЕМЕННЫЕ
 $index: calc(1vw + 1vh);
-$gutter: rem(30);
-$side-small: 26;
-$side-big: 36;
+$gutter: 30px;
+$sideSmall: 26;
+$sideBig: 36;
+$depth: 4000px;
+$transition: 0.75s cubic-bezier(0.075, 0.5, 0, 1);
 
 // ШРИФТ ПО УМОЛЧАНИЮ
 $fontFamily: raleway-3d, sans-serif;
@@ -27,8 +29,8 @@ $fontSize: calc($index * 0.8); // где 18(px) - размер шрифта по
 $lineHeight: 1.75;
 
 // ОСНОВНЫЕ ЦВЕТА
-$mainColor: #fefefe; // Цвет шрифта по умолчанию
-$mainDarkColor: #0e101a;
+$mainColor: #f0f0f0; // Цвет шрифта по умолчанию
+$mainDarkColor: #000000;
 
 // НАСТРОЙКИ
 $minWidth: 320; // Минимальная ширина страницы
@@ -54,6 +56,7 @@ $responsiveType: 1;
 @import 'base/null';
 
 body {
+  height: $depth;
   background-color: $mainDarkColor;
   // Скролл заблокирован
   .lock & {
@@ -144,3 +147,101 @@ body {
 
 // Подключение стилей отдельных страниц
 // @import 'home';
+
+.container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+}
+
+.gallery {
+  transform-style: preserve-3d;
+  height: 100%;
+  opacity: 0;
+  // transition: opacity 0.75s linear;
+  .loaded & {
+    opacity: 1;
+  }
+  // .gallery__frame
+  &__frame {
+  }
+}
+
+.frame {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: $transition, opacity 0.75s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+  &_bg {
+    background-color: rgba($mainDarkColor, 0.87);
+  }
+  // .frame__content
+  &__content {
+  }
+  // .frame__text
+  &__text {
+  }
+  // .frame__media
+  &__media {
+  }
+}
+
+.text-frame {
+  &_left,
+  &_right {
+    .text-frame__title {
+      text-align: left;
+      font-size: calc($index * 3);
+    }
+    & > * {
+      position: relative;
+    }
+  }
+  &_left {
+    & > * {
+      right: 18vw;
+    }
+  }
+  &_right {
+    & > * {
+      left: 18vw;
+    }
+  }
+  // .text-frame__title
+  &__title {
+    font-size: calc($index * 3.3);
+    text-align: center;
+  }
+  // .text-frame__text
+  &__text {
+    max-width: 30vw;
+    margin-top: 3vh;
+  }
+}
+
+.media-frame {
+  position: relative;
+  width: calc($index * $sideSmall);
+  height: calc($index * $sideBig);
+  background-position: center;
+  background-size: cover;
+  &_left {
+    transform: translateX(calc(-50% - $gutter));
+  }
+  &_right {
+    transform: translateX(calc(50% + $gutter));
+  }
+}
+
+video {
+  &.media-frame {
+    width: calc($index * $sideBig);
+    height: calc($index * $sideSmall);
+  }
+}
