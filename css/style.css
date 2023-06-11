@@ -1,4 +1,20 @@
 @charset "UTF-8";
+@font-face {
+  font-family: 'raleway-3d';
+  font-display: swap;
+  src: url('../fonts/raleway-v22-cyrillic-100.woff2') format('woff2'),
+    url('../fonts/raleway-v22-cyrillic-100.woff') format('woff');
+  font-weight: 100;
+  font-style: cyrillic;
+}
+@font-face {
+  font-family: 'raleway-3d';
+  font-display: swap;
+  src: url('../fonts/raleway-v22-cyrillic-300.woff2') format('woff2'),
+    url('../fonts/raleway-v22-cyrillic-300.woff') format('woff');
+  font-weight: 300;
+  font-style: cyrillic;
+}
 * {
   padding: 0px;
   margin: 0px;
@@ -9,7 +25,7 @@
 *:before,
 *:after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html,
@@ -19,11 +35,11 @@ body {
 }
 
 body {
-  color: #333;
-  line-height: 1;
-  font-family: Roboto, sans-serif;
-  font-weight: 400;
-  font-size: 1rem;
+  color: #fefefe;
+  line-height: 1.75;
+  font-family: raleway-3d, sans-serif;
+  font-weight: 300;
+  font-size: calc((1vw + 1vh) * 0.8);
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
@@ -34,7 +50,7 @@ body {
 input,
 button,
 textarea {
-  font-family: Roboto, sans-serif;
+  font-family: raleway-3d, sans-serif;
   font-size: inherit;
 }
 
@@ -75,10 +91,13 @@ h6 {
   font-size: inherit;
 }
 
+body {
+  background-color: #0e101a;
+}
 .lock body {
   overflow: hidden;
   -ms-touch-action: none;
-      touch-action: none;
+  touch-action: none;
 }
 .wrapper {
   min-height: 100%;
@@ -87,14 +106,14 @@ h6 {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   overflow: hidden;
 }
 .wrapper > main {
   -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .wrapper > * {
   min-width: 0;
@@ -106,28 +125,6 @@ h6 {
 Например header__container, main__container и т.д.
 Снипет (HTML): cnt
 */
-[class*=__container] {
-  max-width: 85.625rem;
-  -webkit-box-sizing: content-box;
-          box-sizing: content-box;
-  margin: 0 auto;
+[class*='__container'] {
   padding: 0 0.9375rem;
-}
-
-[class*=-ibg] {
-  position: relative;
-}
-[class*=-ibg] img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-[class*=-ibg_contain] img {
-  -o-object-fit: contain;
-     object-fit: contain;
 }
